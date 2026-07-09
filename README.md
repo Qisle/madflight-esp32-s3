@@ -2,7 +2,7 @@
 
 This repository contains the key project code for an ESP32-S3 indoor quadcopter flight controller based on madflight 2.3.0.
 
-It is intentionally a small source release, not a full copy of the upstream madflight repository. The included files are the project-specific firmware entry point, board/sensor configuration, Web Cockpit control path, PID control code, online tuning code, WS2812 status LED code, and PlatformIO/library metadata needed to understand the build target.
+It is intentionally a source-code release focused on the firmware project, not a full workspace dump. The repository includes the complete `src/` directory from the current ESP32-S3 project, plus the root metadata needed to understand the PlatformIO target.
 
 ## Project Scope
 
@@ -21,14 +21,15 @@ It is intentionally a small source release, not a full copy of the upstream madf
 
 - `platformio.ini`: ESP32-S3 PlatformIO environment, USB CDC, PSRAM, and 16 MB flash configuration.
 - `library.properties`: Arduino library metadata inherited from the madflight project layout.
+- `src/`: complete firmware source directory from the current project.
+
+Important project-specific files inside `src/` include:
+
 - `src/main.cpp`: quadcopter control program, Web Cockpit input integration, flight mode handling, ALT control, arming/failsafe path, and motor mixing.
 - `src/madflight_config.h`: board, sensor, bus, pin, and output configuration for the current ESP32-S3 hardware.
-- `src/usr/usr_mobile_ui.cpp`: ESP32 WiFi/WebServer/API/UDP control logic and telemetry endpoints.
-- `src/usr/usr_mobile_ui.h`: Web Cockpit control-state interface used by the flight controller.
-- `src/usr/usr_mobile_ui_page.h`: embedded HTML/CSS/JS Web Cockpit page served from firmware.
-- `src/usr/usr_quad_tuning.cpp` and `src/usr/usr_quad_tuning.h`: online tunable quadcopter parameters and defaults.
+- `src/usr/*`: ESP32 Web Cockpit, WiFi/WebServer/API/UDP control logic, telemetry endpoints, embedded HTML/CSS/JS page, and online tuning defaults.
 - `src/pid/*`: PID controller state, controller implementation, and low-pass filter helper used by the control loop.
-- `src/ws2812_status_led.cpp` and `src/ws2812_status_led.h`: WS2812 status LED helper.
+- `src/ws2812_status_led.*`: WS2812 status LED helper.
 
 ## Not Included
 
@@ -36,9 +37,9 @@ This repository does not include:
 
 - Local assistant/workspace configuration files.
 - Development notes, rendered reports, logs, generated caches, or build output.
-- Large upstream madflight modules, board databases, generated protocol libraries, examples, images, PDFs, or tooling not specific to this ESP32-S3 build.
+- Non-source workspace material such as examples, images, PDFs, reports, and auxiliary tooling outside `src/`.
 
-To build a complete firmware image, place these files into a compatible madflight 2.3.0 source tree or restore the required upstream madflight library modules through your normal dependency workflow.
+To build a complete firmware image, use this repository as a PlatformIO project source tree and restore any required external toolchain dependencies through your normal PlatformIO setup.
 
 ## Safety Notice
 
