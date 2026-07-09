@@ -1,8 +1,6 @@
 .pio/
 .piocore/
 .vscode/
-.codex/
-.claude/
 logs/
 __pycache__/
 *.pyc

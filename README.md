@@ -2,7 +2,7 @@
 
 This repository contains the key project code for an ESP32-S3 indoor quadcopter flight controller based on madflight 2.3.0.
 
-It is intentionally a small source release, not a full copy of the upstream madflight repository. The included files are the project-specific firmware entry point, board/sensor configuration, Web Cockpit control path, online tuning code, WS2812 status LED code, and PlatformIO/library metadata needed to understand the build target.
+It is intentionally a small source release, not a full copy of the upstream madflight repository. The included files are the project-specific firmware entry point, board/sensor configuration, Web Cockpit control path, PID control code, online tuning code, WS2812 status LED code, and PlatformIO/library metadata needed to understand the build target.
 
 ## Project Scope
 
@@ -27,6 +27,7 @@ It is intentionally a small source release, not a full copy of the upstream madf
 - `src/usr/usr_mobile_ui.h`: Web Cockpit control-state interface used by the flight controller.
 - `src/usr/usr_mobile_ui_page.h`: embedded HTML/CSS/JS Web Cockpit page served from firmware.
 - `src/usr/usr_quad_tuning.cpp` and `src/usr/usr_quad_tuning.h`: online tunable quadcopter parameters and defaults.
+- `src/pid/*`: PID controller state, controller implementation, and low-pass filter helper used by the control loop.
 - `src/ws2812_status_led.cpp` and `src/ws2812_status_led.h`: WS2812 status LED helper.
 
 ## Not Included
